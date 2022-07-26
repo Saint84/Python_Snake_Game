@@ -16,6 +16,7 @@ class SnakeGame:
                        "Black": (0, 0, 0)}
 
         self.Background_path = "../Source/Background_A.png"
+        self.Food_Path = "../Source/Apple-icon_B.png"
         self.Sound_path = "../Source/Title.mp3"
 
         self.Display = pygame.display.set_mode(self.Display_Size)
@@ -73,8 +74,10 @@ class SnakeGame:
             pygame.draw.rect(self.Display, self.Colors["Blue"],
                              [p[0], p[1], self.Snake_Size_x, self.Snake_Size_y])
 
-        pygame.draw.rect(self.Display, self.Colors["Red"],
-                         [self.Food_Position_x, self.Food_Position_y, self.Food_Size_x, self.Food_Size_x])
+        # pygame.draw.rect(self.Display, self.Colors["Red"],
+        #                  [self.Food_Position_x, self.Food_Position_y, self.Food_Size_x, self.Food_Size_x])
+        apple_food = pygame.image.load(self.Food_Path).convert()
+        self.Display.blit(apple_food, (self.Food_Position_x, self.Food_Position_y))
 
         if len(self.Snake_list) > self.Snake_Length:
             del self.Snake_list[0]
